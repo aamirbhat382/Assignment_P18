@@ -1,6 +1,8 @@
 require("dotenv").config();
 const express = require( 'express');
 const app = express();
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const routes = require('./routes/auth');
 const mongoose = require( 'mongoose');
 const path = require( 'path');
@@ -21,10 +23,10 @@ db.once('open', () => {
     console.log('DB connected...');
 });
 
-global.appRoot = path.resolve(__dirname);
+app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(cors());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+
 
 // app.use('/uploads', express.static('uploads'));
 app.use("/api", authRoutes);
