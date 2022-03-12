@@ -7,7 +7,7 @@ const routes = require('./routes/auth');
 const mongoose = require( 'mongoose');
 const path = require( 'path');
 const cors = require( 'cors');
-const APP_PORT = 3000;
+const APP_PORT = 3300;
 
 const authRoutes = require('./routes/auth')
 

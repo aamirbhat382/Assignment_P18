@@ -1,6 +1,7 @@
 const Upload = require('../models/pdf')
 const formidable = require("formidable");
 const User = require('../models/user')
+const Pdf = require('../models/pdf')
 const fs = require("fs");
 
 exports.uploadPDF = (req, res) => {
@@ -57,3 +58,44 @@ exports.uploadPDF = (req, res) => {
       });
     });
   };
+
+exports.getPdfs = async(req,res)=>{
+  const userId  = req.params.userId
+  const pdfIds  = await User.findById({_id:userId})
+  let documents;
+  try {
+    documents = await Pdf.find({
+      _id: { $in: pdfIds.uploads},
+    }).select("-pdf");
+  } catch (err) {
+    return res.status(400).json({ err: "Something went wrong" });
+  }
+  // console.log(documents)
+  return res.json(documents);
+}
+exports.viewPdf = async(req,res)=>{
+  const pdfId  = req.params.pdfId
+  let document;
+  try {
+    document = await Pdf.findById(
+      {_id:pdfId}
+    )
+  } catch (err) {
+    return res.status(400).json({ err: "Something went wrong" });
+  }
+  console.log(document)
+  return res.json(document);
+}
+exports.downloadPdf = async(req,res)=>{
+  const pdfId  = req.params.pdfId
+  let document;
+  try {
+    document = await Pdf.findById(
+      {_id:pdfId}
+    )
+  } catch (err) {
+    return res.status(400).json({ err: "Something went wrong" });
+  }
+  console.log(document)
+  return res.json(document);
+}
