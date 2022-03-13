@@ -6,6 +6,7 @@ import PrivateRoutes from './PrivateRoutes'
 import Dashboard from "./Dashboard";
 import Upload from "./Upload";
 import ViewPdf from './ViewPdf'
+import DownloadPdf from './DownloadPdf'
 
 
 const AllRoutes = () => {
@@ -13,8 +14,8 @@ const AllRoutes = () => {
     <BrowserRouter>
       
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/signin" element={<SignIn />}></Route>
+          <Route path="/" element={<SignIn/>}></Route>
+          <Route path="/signup" element={<Home />}></Route>
 
           {/*Private  Routes user must be login  */}
           <Route
@@ -38,6 +39,14 @@ const AllRoutes = () => {
             element={
               <PrivateRoutes>
                 <ViewPdf />
+              </PrivateRoutes>
+            }
+          ></Route> 
+          <Route
+            path="/dashboard/user/pdf/download/:pdfId"
+            element={
+              <PrivateRoutes>
+                <DownloadPdf />
               </PrivateRoutes>
             }
           ></Route> 

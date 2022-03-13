@@ -59,9 +59,20 @@ export const getPdf =async (userId)=>{
 		return console.log(err);
 	}
 }
+
 export const viewPdf =async (pdfId)=>{
 	try {
 		const response = await fetch(`${API}user/pdf/view/${pdfId}`, {
+			
+		});
+		return await response.json();
+	} catch (err) {
+		return console.log(err);
+	}
+}
+export const dowmloadPdf =async (pdfId)=>{
+	try {
+		const response = await fetch(`${API}user/pdf/download/${pdfId}`, {
 			
 		});
 		return await response.json();

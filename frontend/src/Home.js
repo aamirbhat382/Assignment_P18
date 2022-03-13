@@ -60,7 +60,7 @@ import { signUpMethod} from "./helper"
               </div>
               
               <button onClick={onSubmit}  className="btn btn-primary ">Submit</button>
-              <p>Already have an Account </p><Link to="/signin">Login Here</Link>
+              <p>Already have an Account </p><Link to="/">Login Here</Link>
            </form>
         </div>
       )

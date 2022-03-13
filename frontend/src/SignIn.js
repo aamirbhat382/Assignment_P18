@@ -63,7 +63,7 @@ const performRedirect =()=>{
               </div>
               
               <button onClick={onSubmit}  className="btn btn-primary ">Submit</button>
-              <p>Create an Account </p><Link to="/">Create Account</Link>
+              <p>Create an Account </p><Link to="/signup">Create Account</Link>
            </form>
         </div>
       )

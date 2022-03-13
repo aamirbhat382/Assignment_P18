@@ -5,7 +5,7 @@ import { viewPdf } from "./helper";
 function ViewPdf() {
   const location = useLocation();
   const { pdfId } = location.state;
-  console.log(pdfId);
+  // console.log(pdfId);
   const [pdf_file, setPdf] = useState({
     error: "",
     success: false,

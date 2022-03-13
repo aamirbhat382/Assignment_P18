@@ -83,7 +83,7 @@ exports.viewPdf = async(req,res)=>{
   } catch (err) {
     return res.status(400).json({ err: "Something went wrong" });
   }
-  console.log(document)
+  // console.log(document)
   return res.json(document);
 }
 exports.downloadPdf = async(req,res)=>{
@@ -96,6 +96,5 @@ exports.downloadPdf = async(req,res)=>{
   } catch (err) {
     return res.status(400).json({ err: "Something went wrong" });
   }
-  console.log(document)
   return res.json(document);
 }
