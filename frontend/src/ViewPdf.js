@@ -1,15 +1,15 @@
-import React, { useEffect,  useState } from 'react'
-import { useLocation } from 'react-router-dom';
-import { viewPdf } from './helper';
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { viewPdf } from "./helper";
 
 function ViewPdf() {
-  const location = useLocation()
-  const {pdfId} = location.state
-  console.log(pdfId)
+  const location = useLocation();
+  const { pdfId } = location.state;
+  console.log(pdfId);
   const [pdf_file, setPdf] = useState({
     error: "",
     success: false,
-    pdf:""
+    pdf: {},
   });
   const { error, success, pdf } = pdf_file;
   useEffect(() => {
@@ -26,11 +26,25 @@ function ViewPdf() {
     });
   }, []);
 
-console.log(pdf_file)
-  return (
-   
-    <head></head>
-  )
+  function showPdfFile() {
+    if (pdf_file.success === true) {
+      return (
+        <embed
+          src={`data:application/pdf;base64,${btoa(
+            String.fromCharCode(...new Uint8Array(pdf_file.pdf.data.data))
+          )}`}
+          id="displayFile"
+          alt="your image"
+          width="100%"
+          height="1200px"
+          style={{ borderStyle: "none" }}
+          type="application/pdf"
+        />
+      );
+    }
+  }
+  console.log(pdf_file);
+  return <>{pdf_file.success === true && showPdfFile()}</>;
 }
 
-export default ViewPdf
+export default ViewPdf;
