@@ -103,7 +103,7 @@ import { signUpMethod} from "./helper"
     {successMessage()}
     {errorMessage()}
     {signUpForm()}
-    <Link to="https://github.com/aamirbhat382/Assignment_P18/tree/main">Github</Link>
+    <a href="https://github.com/aamirbhat382/Assignment_P18/tree/main" target='_blank'>GitHub</a>
     </div>
     </>
  )

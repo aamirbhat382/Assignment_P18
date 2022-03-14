@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {  isAutheticated, uploadPdf} from "./helper";
-import {Link } from 'react-router-dom'
+import {Link ,Navigate } from 'react-router-dom'
 
 
 
@@ -136,7 +136,7 @@ const Upload = () => {
       {errorMessage()}
       {successMessage()}
       {uploadForm()}
-      <Link to="https://github.com/aamirbhat382/Assignment_P18/tree/main">Github</Link>
+      <a href="https://github.com/aamirbhat382/Assignment_P18/tree/main" target='_blank'>GitHub</a>
       </div>
     </>
   );
