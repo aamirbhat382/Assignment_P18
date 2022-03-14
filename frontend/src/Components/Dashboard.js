@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { isAutheticated, getPdf } from "./helper";
+import { isAutheticated, getPdf, margePdf } from "./helper";
 function Dashboard() {
   const { user } = isAutheticated();
   const [pdfs_files, setPdfs] = useState({
@@ -22,7 +22,21 @@ function Dashboard() {
       }
     });
   }, []);
- 
+
+const showPDF = ()=>{
+  if(pdfs_files.pdfs.length >= 3){
+    return(<p>Sorry! you can not upload more then three files</p>)
+  }else{
+    return(
+      <button className="btn btn-dark pointer ">
+        <Link className="text-light" to="/dashboard/upload">
+          Upload PDF
+        </Link>
+        </button>
+    )
+  }
+}
+
   const errorMessage = () => {
     return (
       <div className="row">
@@ -41,11 +55,7 @@ function Dashboard() {
   return (
     <div className="container py-5">
       {errorMessage()}
-      <button className="btn btn-dark pointer ">
-        <Link className="text-light" to="/dashboard/upload">
-          Upload PDF
-        </Link>
-      </button>
+     {showPDF()}
       <div className="list-group py-2 mt-2">
         {pdfs_files.pdfs &&
           pdfs_files.pdfs.map((element, index) => {

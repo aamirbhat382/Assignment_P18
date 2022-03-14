@@ -1,12 +1,13 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Home";
-import SignIn from "./SignIn";
+import Home from "./Components/Home";
+import SignIn from "./Components/SignIn";
 import PrivateRoutes from './PrivateRoutes'
-import Dashboard from "./Dashboard";
-import Upload from "./Upload";
-import ViewPdf from './ViewPdf'
-import DownloadPdf from './DownloadPdf'
+import Dashboard from "./Components/Dashboard";
+import Upload from "./Components/Upload";
+import ViewPdf from './Components/ViewPdf'
+import DownloadPdf from './Components/DownloadPdf'
+import MargePdf from "./Components/MargePdf";
 
 
 const AllRoutes = () => {
@@ -43,13 +44,21 @@ const AllRoutes = () => {
             }
           ></Route> 
           <Route
-            path="/dashboard/user/pdf/download/:pdfId"
+            path="/dashboard/marge"
+            element={
+              <PrivateRoutes>
+                <MargePdf />
+              </PrivateRoutes>
+            }
+          ></Route> 
+          <Route
+            path="/dashboard/user/pdf/marge/:pdfId"
             element={
               <PrivateRoutes>
                 <DownloadPdf />
               </PrivateRoutes>
             }
-          ></Route> 
+          ></Route>
         </Routes>
      
     </BrowserRouter>

@@ -5,6 +5,7 @@ const expressJwt = require("express-jwt")
 
 function authController() {
   return {
+    // Register 
     register: async (req, res) => {
       const { name, phoneNumber, password } = req.body;
       // Validate request
@@ -41,6 +42,7 @@ function authController() {
           });
         });
     },
+    // Login
     login: async (req, res) => {
       try {
         if (!req.body.phoneNumber || !req.body.password) {

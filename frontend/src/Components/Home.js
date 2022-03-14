@@ -75,7 +75,7 @@ import { signUpMethod} from "./helper"
             style={{ display: success ? "" : "none" }}
           >
             New account was created successfully. Please{" "}
-            <Link to="/signin">Login Here</Link>
+            <Link to="/">Login Here</Link>
           </div>
         </div>
       </div>

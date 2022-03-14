@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {  isAutheticated, uploadPdf} from "./helper";
+import {Link } from 'react-router-dom'
 
 
 
@@ -78,6 +79,13 @@ const Upload = () => {
       </div>
     );
   };
+  const loadingMessage = () => {
+    return (
+      <div class="spinner-border" role="status" style={{ display: loading ? "" : "none" }}>
+      <span class="visually-hidden">Loading...</span>
+</div>    
+    );
+  };
 
   const uploadForm = () => {
     return (
@@ -112,6 +120,11 @@ const Upload = () => {
           <button onClick={onSubmit} className="btn btn-primary ">
             Upload
           </button>
+        <button className="btn btn-dark pointer mx-2 ">
+        <Link className="text-light" to="/dashboard">
+          Dashboard
+        </Link>
+      </button>
         </form>
       </div>
     );
@@ -119,6 +132,7 @@ const Upload = () => {
   return (
     <>
     <div className="container py-5">
+    {loadingMessage()}
       {errorMessage()}
       {successMessage()}
       {uploadForm()}

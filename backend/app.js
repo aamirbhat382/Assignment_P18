@@ -3,13 +3,13 @@ const express = require( 'express');
 const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const routes = require('./routes/auth');
+const routes = require('./routes/route');
 const mongoose = require( 'mongoose');
 const path = require( 'path');
 const cors = require( 'cors');
 const APP_PORT = 3300;
 
-const authRoutes = require('./routes/auth')
+const authRoutes = require('./routes/route')
 
 // Database connection
 mongoose.connect(process.env.DATABASE_URL, {

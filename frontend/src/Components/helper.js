@@ -80,7 +80,16 @@ export const dowmloadPdf =async (pdfId)=>{
 		return console.log(err);
 	}
 }
-
+export const margePdf =async (userId)=>{
+	try {
+		const response = await fetch(`${API}user/pdfs/marge/${userId}`, {
+			
+		});
+		return await response.json();
+	} catch (err) {
+		return console.log(err);
+	}
+}
 
 export const authenticate = (data, next) => {
   if (typeof window !== "undefined") {

@@ -7,7 +7,7 @@ function DownloadPdf() {
     const { pdfId } = location.state;
     useEffect(() => {
         dowmloadPdf(pdfId).then((data)=>{
-            console.log(data)
+            // console.log(data)
             const arr = new Uint8Array(data.pdf.data.data);
                 var blob = new Blob([arr], { type: 'application/pdf' });
                 var url = URL.createObjectURL(blob);
